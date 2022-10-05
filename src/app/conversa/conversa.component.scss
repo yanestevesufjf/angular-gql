@@ -1,0 +1,37 @@
+* {
+    font-family: sans-serif;
+}
+h4 {
+    text-align: center;
+}
+.conversa-card {
+    display: blcok;
+    max-width: 50%;
+    margin: 0 auto;
+}
+
+.msg {
+    display: block;   
+    margin-bottom: 12px;         
+}
+
+.msg-container {
+    width: 240px;
+    height: 32px;
+    padding: 6px 10px;
+    background: rgb(159, 159, 159);
+    color: #f3f3f3;
+    border-radius: 4px;
+}
+
+.sender {
+    font-size: 12px;
+    display: block;
+    color: rgb(60, 60, 60);
+}
+
+.i-sender .msg-container{
+    margin-left: calc(100% - 240px - 20px);
+    text-align: right;
+    background: #34af23;
+}
