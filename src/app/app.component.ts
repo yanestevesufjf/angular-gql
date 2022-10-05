@@ -12,23 +12,23 @@ export class AppComponent implements OnInit {
   constructor(private apollo: Apollo) { }
 
 
-  GET_CHARACTERS = gql`
-  query GetCharacters($ids: [Int!]!){
-     character(ids: $ids) {
-       name
-     }
-  }
- `
+//   GET_CHARACTERS = gql`
+//   query GetCharacters($ids: [Int!]!){
+//      character(ids: $ids) {
+//        name
+//      }
+//   }
+//  `
 
   ngOnInit() {
-    this.apollo.watchQuery({
-      query: this.GET_CHARACTERS,      
-      variables: {
-        ids: [1001, 1002]
-      }
-    }).valueChanges.subscribe((data) => {
-      console.log(data)
-    })
+    // this.apollo.watchQuery({
+    //   query: this.GET_CHARACTERS,      
+    //   variables: {
+    //     ids: [1001, 1002]
+    //   }
+    // }).valueChanges.subscribe((data) => {
+    //   console.log(data)
+    // })
 
     // this.apollo.watchQuery({
     //   query: gql`
