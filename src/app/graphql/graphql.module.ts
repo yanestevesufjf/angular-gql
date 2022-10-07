@@ -2,13 +2,25 @@ import { NgModule } from '@angular/core';
 import { ApolloModule, APOLLO_OPTIONS } from 'apollo-angular';
 import { HttpLink } from 'apollo-angular/http';
 import { onError } from "@apollo/client/link/error";
-import { ApolloClientOptions, from, InMemoryCache, split } from '@apollo/client/core';
+import { ApolloClientOptions, ApolloLink, from, InMemoryCache, split } from '@apollo/client/core';
 import { WebSocketLink } from '@apollo/client/link/ws';
 import { getMainDefinition } from '@apollo/client/utilities';
+import { HttpHeaders } from '@angular/common/http';
 
 const uri = 'https://localhost:7230/graphql';
 
 export function createApollo(httpLink: HttpLink): ApolloClientOptions<any> {
+
+  const auth = new ApolloLink((operation: any, forward: any) => {
+    operation.setContext({
+      headers: new HttpHeaders().set(
+        "Authorization",
+        `Bearer ${localStorage.getItem("access_token")}` || '',
+      )
+    });
+
+    return forward(operation);
+  });
 
   const http = httpLink.create({
     uri: uri
@@ -44,6 +56,7 @@ export function createApollo(httpLink: HttpLink): ApolloClientOptions<any> {
 
   return {
     link: from([
+      auth,
       errorLink,
       link
     ]),
