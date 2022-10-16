@@ -1,8 +1,16 @@
-<p>home works!</p>
+<h4>WhatsApp Fake</h4>
+<h6>{{ connected() | json }}</h6>
+<div class="conversa-card">
+    <div class="msg" *ngFor="let mensagem of mensagens" [class.i-sender]="mensagem.sender === 'Yan'">
+        <div class="msg-container">
+            <span class="sender">{{ mensagem.sender }}</span>
+            <span>{{ mensagem.texto }}</span>
+        </div>        
+    </div>
+</div>
 
-<div>
-    <h4>Ofertas</h4>
+<div class="enviaMensagem">
 
-    <!-- {{ veiculos | json}} -->
-
+    <input  [(ngModel)]="mensagemTexto" placeholder="Set Token"> 
+    <button (click)="enviarMensagem()">Enviar</button>
 </div>

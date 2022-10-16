@@ -27,6 +27,7 @@ export function createApollo(httpLink: HttpLink): ApolloClientOptions<any> {
       },
       connectionCallback(error: any, result?) {
         if (error) {
+          console.log(error);
           HandleSubscriptionService.subscription = {
             connected: false,
             message: error.message.toString()
